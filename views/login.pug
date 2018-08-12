@@ -1,0 +1,23 @@
+extends layout
+
+block top
+  h1= title
+  p Welcome to #{title}
+
+block content
+  <h3>Login</h3>
+
+  <form method="post">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="username">User name</label>
+        <input type="text" class="form-control" id="username" name="username" aria-describedby="userHelp" placeholder="Enter username">
+        <small id="userHelp" class="form-text text-muted">Sign in with your username.</small>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="password_">Password</label>
+        <input type="password" class="form-control" id="password_" name="password_" placeholder="Password">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

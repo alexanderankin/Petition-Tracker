@@ -1,0 +1,63 @@
+extends layout
+
+block content
+  //- pre= JSON.stringify(top, null, 2)
+
+  <div class="container">
+    <div class="row">
+      <div className="col-md-6">
+        <table class="table table-sm" style="font-size: .8em;">
+          <tbody>
+            <tr>
+              <th scope="row">Packet</th>
+              <td>#{top.PACKET_NAME}</td>
+            </tr>
+            <tr>
+              <th scope="row">Canvasser</th>
+              <td>#{top.CANVASSER_FIRST_NAME} #{top.CANVASSER_LAST_NAME}</td>
+            </tr>
+            <tr>
+              <th scope="row">Collection Date</th>
+              <td>#{top.COLLECTION_DATE}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="col-md-6">
+        <table class="table table-sm" style="font-size: .8em;">
+          <tbody>
+            <tr>
+              <th scope="row">Shift</th>
+              <td>#{top.SHIFT}</td>
+            </tr>
+            <tr>
+              <th scope="row">Supervisor</th>
+              <td>#{top.SUPERVISOR_FIRST_NAME} #{top.SUPERVISOR_LAST_NAME}</td>
+            </tr>
+            <tr>
+              <th scope="row">Location</th>
+              <td>#{top.LOCATION_TYPE}: #{top.LOCATION_NAME}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        each header in signiaturesHeaders
+          <th>#{header}</th>
+      </tr>
+    </thead>
+    <tbody>
+      each signiature in signiatures
+        <tr>
+          each header in signiaturesHeaders
+            <td>#{signiature[header]}</td>
+        </tr>
+    </tbody>
+  </table>
+  
+  //- pre= JSON.stringify(signiatures, null, 2)

@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  style.
+    .navigation-btn-group {
+      float: right;
+      margin: 10px;
+      margin-top: -40px;
+    }
+
+  <div class="btn-group navigation-btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary-outline">
+      <a href="/petition?page=#{page - 1}">Prev</a>
+    </button>
+    <button type="button" class="btn btn-primary-outline">
+      <a href="/petition?page=#{page + 1}">Next</a>
+    </button>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        each cell in headerCells
+          th= cell
+      </tr>
+    </thead>
+    <tbody>
+      each packet in packets
+        <tr class="packet-row" data-packet-id="#{packet['id']}">
+          each cell in headerCells
+            <td>#{packet[cell]}</td>
+        </tr>
+    </tbody>
+  </table>
+
+  script.
+    $(function() {
+      $('.packet-row').on('click', function() {
+        window.here = this;
+        var url = '/petition/packet/' + $(this).data("packet-id");
+        window.location.href = url;
+      });
+    });

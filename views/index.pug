@@ -1,0 +1,18 @@
+extends layout
+
+block top
+  h1= title
+  p Welcome to #{title}
+
+block content
+  if (user)
+    <div class="row">
+      <div class="col-md-6"><a href="/registration"><h3>Voter Registration</h3></a></div>
+      <div class="col-md-6"><a href="/petition"><h3>Petitions</h3></a></div>
+    </div>
+      
+  else
+    <div class="row">
+      <div class="col-md-6"><a href="/registration/login"><h3>Voter Registration</h3></a></div>
+      <div class="col-md-6"><a href="/petition/login"><h3>Petitions</h3></a></div>
+    </div>
