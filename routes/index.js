@@ -1,27 +1,23 @@
 var express = require('express');
 var router = express.Router();
 
+var util = require('../util');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var user = req.cookies.user;
-  console.log(user);
-  if (user) {
-    return res.render('index', { user });
-  }
-
-  return res.render('index');
+  return res.render('index', { user: req.cookies.user });  // undefined ok
 });
 
 router.get('/petition/login', function(req, res, next) {
   if (req.cookies.user) {
-    return res.redirect('/');
+    return res.redirect('/petition');
   }
   res.render('login', {});
 });
 
 router.post('/petition/login', function (req, res, next) {
   console.log(req.body);
-  res.cookie('user', req.body.username, { maxAge: 10000000 });
+  res.cookie('user', req.body.username, util.cookieOptions.send);
   res.redirect("/");
 })
 

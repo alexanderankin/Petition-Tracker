@@ -5,14 +5,7 @@ block top
   p Welcome to #{title}
 
 block content
-  if (user)
-    <div class="row">
-      <div class="col-md-6"><a href="/registration"><h3>Voter Registration</h3></a></div>
-      <div class="col-md-6"><a href="/petition"><h3>Petitions</h3></a></div>
-    </div>
-      
-  else
-    <div class="row">
-      <div class="col-md-6"><a href="/registration/login"><h3>Voter Registration</h3></a></div>
-      <div class="col-md-6"><a href="/petition/login"><h3>Petitions</h3></a></div>
-    </div>
+  <div class="row">
+    <div class="col-md-6"><a href="/registration#{ user ? '' : '/login'}"><h3>Voter Registration</h3></a></div>
+    <div class="col-md-6"><a href="/petition#{ user ? '' : '/login'}"><h3>Petitions</h3></a></div>
+  </div>
