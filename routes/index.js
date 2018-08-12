@@ -5,26 +5,28 @@ var util = require('../util');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  return res.render('index', { user: req.cookies.user });  // undefined ok
+  return res.render('index', { user: req.signedCookies.user });  // undefined ok
 });
 
 router.get('/petition/login', function(req, res, next) {
-  if (req.cookies.user) return res.redirect('/petition');
+  if (req.signedCookies.user) return res.redirect('/petition');
   res.render('login');
 });
 
 router.get('/registration/login', function(req, res, next) {
-  if (req.cookies.user) return res.redirect('/registration');
+  if (req.signedCookies.user) return res.redirect('/registration');
   res.render('login');
 });
 
-function loginCheck(req, res, next) {
-  res.cookie('user', req.body.username, util.cookieOptions.send);
-  res.redirect("/");
+function loginCheck(destination) {
+  return function(req, res, next) {
+    res.cookie('user', req.body.username, util.cookieOptions.send);
+    res.redirect(destination);
+  }
 }
 
-router.post('/petition/login', loginCheck);
-router.post('/registration/login', loginCheck);
+router.post('/petition/login', loginCheck('/petition'));
+router.post('/registration/login', loginCheck('/registration'));
 
 router.get('/logout', function (req, res, next) {
   res.clearCookie('user', util.cookieOptions.clear);

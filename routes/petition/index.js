@@ -4,7 +4,7 @@ var router = express.Router();
 var queries = require('../../db/functions');
 
 router.use(function userMW(req, res, next) {
-  if (req.cookies.user) { return next(); }
+  if (res.locals.user = req.signedCookies.user) { return next(); }
   return next(new Error("Unauthorized"));
 });
 

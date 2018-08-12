@@ -14,7 +14,9 @@ html
     if (user)
       <p style="font-size: .8em;">
         | Welcome, #{ user }! (<a href="/logout">logout</a>)
+        | | <a href="/">Home</a>
       </p>
 
-    block content
+    block precontent
 
+    block content
