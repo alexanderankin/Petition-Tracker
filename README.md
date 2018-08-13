@@ -1,19 +1,27 @@
-Usage tips
+# Petition Tracker
 
-```
-yarn install
+Data Entry app for petition signiature collection.
 
-read mysqlu
-read mysqlp
-read mysqldb
+## Requirements
 
-export mysqlu
-export mysqlp
-export mysqldb
+* [Node](https://nodejs.org/en/)
+* [MySQL](https://packages.ubuntu.com/xenial/mysql-server)
 
-PORT=8080 npm start
-```
+### Installation
 
-also included is import script, expects `export.csv` file in cwd.
+* `yarn install`
+* read and run `db/import.sql`
+* `yarn start`
+* login with any username
 
-currently no users db check
+## Roadmap (Priorities)
+
+At present, this is merely a viewer for [PetitionTrak](petitiontrak.com/)
+export data. To be useful, the first two features to be completed are a
+validation system and editing functionality.
+
+* Editing Functionality
+* Voter File validation
+* Importing from Web UI
+* Run as a service
+* User Authentication
