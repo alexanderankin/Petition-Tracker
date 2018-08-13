@@ -30,37 +30,54 @@ block content
         </table>
       </div>
       <div className="col-md-6" style="padding: 0 20px 0 0;">
+        <table class="table table-sm" style="font-size: .8em;">
+          <tbody>
+            <tr>
+              <th scope="row">Circulator's Name</th>
+              <td>#{top['Circulator\'s Name']}</td>
+            </tr>
+            <tr>
+              <th scope="row">Circulator's Address</th>
+              <td>#{top['Circulator\'s Address']}</td>
+            </tr>
+            <tr>
+              <th scope="row">Circulator's Signature Present</th>
+              <td>#{top['Circulator\'s Signature'] ? 'Yes' : 'No'}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 
-  if (pages && pages.length)
+  if (signiatures && signiatures.length)
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-          each header in pagesHeaders
+          each header in signiaturesHeaders
             <th>#{header}</th>
         </tr>
       </thead>
       <tbody>
-        each page in pages
-          <tr class="page-row" data-page-id="#{page['id']}">
-            each header in pagesHeaders
-              <td>#{page[header]}</td>
+        each signiature in signiatures
+          //- <tr class="signiature-row" data-signiature-id="#{signiature['id']}">
+          <tr>
+            each header in signiaturesHeaders
+              <td>#{signiature[header]}</td>
           </tr>
       </tbody>
     </table>
   else
     h6 No pages yet
 
-  script.
-    $(function() {
-      $('.page-row').on('click', function() {
-        window.here = this;
-        var url = '/petition/page/' + $(this).data("page-id");
-        window.location.href = url;
-      });
-    });
+  //- script.
+  //-   $(function() {
+  //-     $('.signiature-row').on('click', function() {
+  //-       window.here = this;
+  //-       var url = '/petition/signiature/' + $(this).data("signiature-id");
+  //-       window.location.href = url;
+  //-     });
+  //-   });
 
   
   //- pre= JSON.stringify(signiatures, null, 2)

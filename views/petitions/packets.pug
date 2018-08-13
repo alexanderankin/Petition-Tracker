@@ -17,21 +17,24 @@ block content
     </button>
   </div>
 
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        each cell in headerCells
-          th= cell
-      </tr>
-    </thead>
-    <tbody>
-      each packet in packets
-        <tr class="packet-row" data-packet-id="#{packet['id']}">
+  if (packets && packets.length)
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
           each cell in headerCells
-            <td>#{packet[cell]}</td>
+            th= cell
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        each packet in packets
+          <tr class="packet-row" data-packet-id="#{packet['id']}">
+            each cell in headerCells
+              <td>#{packet[cell]}</td>
+          </tr>
+      </tbody>
+    </table>
+  else
+    h6 No packets yet
 
   script.
     $(function() {
