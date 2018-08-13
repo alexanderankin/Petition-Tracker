@@ -8,15 +8,15 @@ router.get('/', function(req, res, next) {
   return res.render('index', { user: req.signedCookies.user });  // undefined ok
 });
 
-router.get('/petition/login', function(req, res, next) {
-  if (req.signedCookies.user) return res.redirect('/petition');
-  res.render('login');
-});
+function loginOrRedirect(destination) {
+  return function(req, res, next) {
+    if (req.signedCookies.user) return res.redirect(destination);
+    res.render('login');
+  }
+}
 
-router.get('/registration/login', function(req, res, next) {
-  if (req.signedCookies.user) return res.redirect('/registration');
-  res.render('login');
-});
+router.get('/petition/login', loginOrRedirect('/petition'));
+router.get('/registration/login', loginOrRedirect('/registration'));
 
 function loginCheck(destination) {
   return function(req, res, next) {
