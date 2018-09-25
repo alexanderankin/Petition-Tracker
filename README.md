@@ -16,7 +16,7 @@ Data Entry app for petition signiature collection.
 
 ## Roadmap (Priorities)
 
-At present, this is merely a viewer for [PetitionTrak](petitiontrak.com/)
+At present, this is merely a viewer for [PetitionTrak](https://petitiontrak.com/)
 export data. To be useful, the first two features to be completed are a
 validation system and editing functionality.
 
